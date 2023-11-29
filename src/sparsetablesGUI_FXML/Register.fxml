@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="345.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI_CLASSES.MenuController">
+   <children>
+      <Button layoutX="389.0" layoutY="256.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="38.0" prefWidth="210.0" text="Cancel" />
+      <Button layoutX="43.0" layoutY="256.0" mnemonicParsing="false" onAction="#Save" prefHeight="38.0" prefWidth="210.0" text="Save" />
+      <Label layoutX="30.0" layoutY="78.0" prefHeight="50.0" prefWidth="118.0" text="Select a Student">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="154.0" prefHeight="50.0" prefWidth="118.0" text="Select a Course :">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="list_std" layoutX="179.0" layoutY="90.0" prefHeight="30.0" prefWidth="419.0" />
+      <ChoiceBox fx:id="list_crs" layoutX="179.0" layoutY="166.0" prefHeight="30.0" prefWidth="419.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="deleteRows" prefHeight="492.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI_CLASSES.FXMLTablecrsController2">
+    <children>
+      <Label fx:id="label_courses_of_student" layoutX="16.0" layoutY="33.0" text="">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableview3" layoutX="17.0" layoutY="81.0" prefHeight="345.0" prefWidth="521.0" />
+      <Button layoutX="328.0" layoutY="438.0" mnemonicParsing="false" onAction="#switchToMain" prefHeight="25.0" prefWidth="167.0" text="Back" />
+      <Button layoutX="74.0" layoutY="437.0" mnemonicParsing="false" onAction="#unrollGUI" prefHeight="26.0" prefWidth="167.0" text="Unroll" />
+    </children>
+</AnchorPane>
