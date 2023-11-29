@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import sparsetables.SparseTables; 
 import sparsetables.Students_linkedList.Student; 
 
-public class FXMLTablecrsController2 implements Initializable {
+public class showStudents_OF_CRScontroller implements Initializable {
 
     @FXML
     TableView<Student> tableview3;
@@ -44,7 +44,7 @@ public class FXMLTablecrsController2 implements Initializable {
         TableColumn IDCol = new TableColumn("Student ID");
         TableColumn NameCol = new TableColumn("Student Name");
          
-        label_courses_of_student.setText("Students enrolled in a course \""+FXMLTablecrsController.crs_selected.getCourseName()+"\""); 
+        label_courses_of_student.setText("Students enrolled in a course \""+ShowCRScontroller.crs_selected.getCourseName()+"\""); 
 
         tableview3.getColumns().addAll(NameCol,IDCol);
 
@@ -60,8 +60,8 @@ public class FXMLTablecrsController2 implements Initializable {
 
         tableview3.setItems(data_controller_data);
 
-        if (FXMLTablecrsController.crs_selected!=null) {
-           SparseTables.sparseTable.displayCourseStudents(FXMLTablecrsController.crs_selected); 
+        if (ShowCRScontroller.crs_selected!=null) {
+           SparseTables.sparseTable.displayCourseStudents(ShowCRScontroller.crs_selected); 
         }
         
         
@@ -91,7 +91,7 @@ public class FXMLTablecrsController2 implements Initializable {
     
       public void unrollGUI(ActionEvent event) throws IOException {
         data_controller_data.clear();
-        SparseTables.unroll(stdDelete,FXMLTablecrsController.crs_selected);
+        SparseTables.unroll(stdDelete,ShowCRScontroller.crs_selected);
         Parent root = FXMLLoader.load(getClass().getResource("/sparsetablesGUI_FXML/FXTableCRS.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="deleteRows" prefHeight="492.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI_CLASSES.FXMLTableStdController2">
+<AnchorPane id="AnchorPane" fx:id="deleteRows" prefHeight="492.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI_CLASSES.showCourses_OF_STDcontroller">
     <children>
       <Label fx:id="label_student_of_courses" layoutX="16.0" layoutY="33.0" text="">
          <font>

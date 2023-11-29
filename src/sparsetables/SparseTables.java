@@ -1,7 +1,7 @@
 package sparsetables;
 
-import GUI_CLASSES.FXMLTableStdController2;
-import GUI_CLASSES.FXMLTablecrsController2;
+import GUI_CLASSES.showCourses_OF_STDcontroller;
+import GUI_CLASSES.showStudents_OF_CRScontroller;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -139,7 +139,7 @@ public class SparseTables extends Application {
             System.out.println(student.getStudentName() + " is associated with the following Courses:");
             while (curCellData != null) {
                 System.out.println(curCellData.getMy_course().getCourseId());
-                FXMLTableStdController2.data_controller_data2.add(curCellData.getMy_course());
+                showCourses_OF_STDcontroller.data_controller_data2.add(curCellData.getMy_course());
                 curCellData = curCellData.getNextCellDown();
             }
         }
@@ -156,7 +156,7 @@ public class SparseTables extends Application {
             System.out.println("Students in Course " + Course.getCourseId() + ":");
             while (curCellData != null) {
                 String StudentId = curCellData.getMy_student().getStudentId();
-                FXMLTablecrsController2.data_controller_data.add(curCellData.getMy_student());
+                showStudents_OF_CRScontroller.data_controller_data.add(curCellData.getMy_student());
                 curCellData = curCellData.getNextCellRight();
             }
         }

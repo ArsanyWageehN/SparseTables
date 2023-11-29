@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import sparsetables.CoursesList.Course;
 import sparsetables.SparseTables;  
  
-public class FXMLTableStdController2 implements Initializable {
+public class showCourses_OF_STDcontroller implements Initializable {
 
     @FXML
     TableView<Course> tableview4;
@@ -42,7 +42,7 @@ public class FXMLTableStdController2 implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        label_student_of_courses.setText("Courses recorded by the student \""+FXMLTableStdController.std_selected.getStudentName()+"\""); 
+        label_student_of_courses.setText("Courses recorded by the student \""+ShowStdController.std_selected.getStudentName()+"\""); 
 
         TableColumn IDCol = new TableColumn("Course code");
         TableColumn NameCol = new TableColumn("Course Name");
@@ -61,8 +61,8 @@ public class FXMLTableStdController2 implements Initializable {
 
         tableview4.setItems(data_controller_data2);
 
-        if (FXMLTableStdController.std_selected!=null) {
-            SparseTables.sparseTable.displaystudentCourses(FXMLTableStdController.std_selected);
+        if (ShowStdController.std_selected!=null) {
+            SparseTables.sparseTable.displaystudentCourses(ShowStdController.std_selected);
         }
 
         tableview4.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
@@ -90,7 +90,7 @@ public class FXMLTableStdController2 implements Initializable {
 
     public void unrollGUI(ActionEvent event) throws IOException {
         data_controller_data2.clear(); 
-        sparsetables.SparseTables.unroll(FXMLTableStdController.std_selected,crsDelete);
+        sparsetables.SparseTables.unroll(ShowStdController.std_selected,crsDelete);
         Parent root = FXMLLoader.load(getClass().getResource("/sparsetablesGUI_FXML/FXTableStudents.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);

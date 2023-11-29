@@ -17,60 +17,50 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import sparsetables.CoursesList.Course;
 import sparsetables.SparseTables;
-import sparsetables.Students_linkedList.Student;
 
-public class FXMLTableStdController implements Initializable {
+public class ShowCRScontroller implements Initializable {
 
     @FXML
-    TableView<Student> tableview;
+    TableView<Course> tableview2;
 
     @FXML
     private Scene scene;
     private Stage stage;
 
-    ObservableList<Student> data;
-
-    public static Student std_selected;
+    ObservableList<Course> data;
+    public static Course crs_selected;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        std_selected=null;
 
-        TableColumn IDCol = new TableColumn("ID");
-        TableColumn NameCol = new TableColumn("Name");
+        crs_selected = null;
+        TableColumn IDCol = new TableColumn("Course Code");
+        TableColumn NameCol = new TableColumn("Course Name");
 
-        tableview.getColumns().addAll(IDCol, NameCol);
+        tableview2.getColumns().addAll(NameCol, IDCol);
 
         data = FXCollections.observableArrayList();
 
         IDCol.setCellValueFactory(
-                new PropertyValueFactory<Student, String>("StudentId")
+                new PropertyValueFactory<Course, String>("CourseId")
         );
 
         NameCol.setCellValueFactory(
-                new PropertyValueFactory<Student, String>("StudentName")
+                new PropertyValueFactory<Course, String>("CourseName")
         );
 
-        tableview.setItems(data);
+        tableview2.setItems(data);
 
-        Student firstStudent = SparseTables.studentList.getFirstStudent();
-        if (firstStudent != null) {
-            while (firstStudent != null) {
-                data.add(firstStudent);
-                firstStudent = firstStudent.getNextStudentRight();
+        Course firstCourse = SparseTables.coursesList.getFirstCourse();
+        if (firstCourse != null) {
+            while (firstCourse != null) {
+                data.add(firstCourse);
+                firstCourse = firstCourse.getNextCoursedown();
             }
         }
 
-    }
-
-    @FXML
-    void getSelectedItem(javafx.scene.input.MouseEvent event) {
-        Student stdData = tableview.getSelectionModel().getSelectedItem();
-        if (stdData != null) {
-            std_selected = stdData;
-        }
     }
 
     public void switchToMain(ActionEvent event) throws IOException {
@@ -82,16 +72,23 @@ public class FXMLTableStdController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    void getSelectedItem(javafx.scene.input.MouseEvent event) {
+        Course crsdata = tableview2.getSelectionModel().getSelectedItem();
+        if (crsdata != null) {
+            crs_selected = crsdata;
+        }
+    }
+
     public void Show(ActionEvent event) throws IOException {
-        if (std_selected != null) {
-            Parent root = FXMLLoader.load(getClass().getResource("/sparsetablesGUI_FXML/Courses_OF_Students.fxml"));
+        if (crs_selected != null) {
+            Parent root = FXMLLoader.load(getClass().getResource("/sparsetablesGUI_FXML/Students_of_Courses.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.setTitle("Alexandria University");
             stage.show();
-        }else
-        {
+        } else { 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText("Select first");
