@@ -6,8 +6,8 @@ import sparsetables.CoursesList.Course;
 
 public class Cell_data {
 
-   private Student my_student;
-   private Course my_course;
+    private Student my_student;
+    private Course my_course;
 
     private Cell_data nextCellRight; // Reference to the next cell in the right direction
     private Cell_data nextCellDown; // Reference to the next cell in the down direction

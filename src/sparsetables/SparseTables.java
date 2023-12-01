@@ -165,7 +165,10 @@ public class SparseTables extends Application {
     public static void unroll(Student student, Course course) {
 
         if (course == null || student == null) {
-            System.out.println("its is already empty");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Its is already empty");
+            alert.showAndWait();
         } else {
             Cell_data current = course.getFirstStudentCellData();
 
@@ -220,19 +223,6 @@ public class SparseTables extends Application {
 
     public static void deleteStudent(String IDStudent, Students_linkedList listSTD, CoursesList listCR) {
 
-        Course current2 = listCR.getFirstCourse();
-        if (current2 != null) {
-            Cell_data currentCell2;
-
-            while (current2 != null) {
-                currentCell2 = current2.getFirstStudentCellData();
-                if (currentCell2 != null && currentCell2.getMy_student().getStudentId().equals(IDStudent)) {
-                    current2.setFirstStudentCellData(currentCell2.getNextCellRight());
-                }
-                current2 = current2.getNextCoursedown();
-            }
-        }
-
         Student current = listSTD.getFirstStudent();
 
         if (current != null) {
@@ -246,10 +236,17 @@ public class SparseTables extends Application {
 
                 while (currentCell != null) {
 
+                    Cell_data currentCell2 = currentCell.getMy_course().getFirstStudentCellData();
+                    if (currentCell2 != null && currentCell2.getMy_student().getStudentId().equals(IDStudent)) {
+                        currentCell.getMy_course().setFirstStudentCellData(currentCell2.getNextCellRight());
+                    }
+                    
+                    currentCell.setMy_course(null);
+                    currentCell.setMy_student(null);
+
                     if (currentCell.getNextCellRight() != null) {
                         currentCell.getNextCellRight().setNextCellleft(currentCell.getNextCellleft());
                     } else {
-
                         currentCell.setNextCellRight(null);
                     }
 
@@ -259,19 +256,14 @@ public class SparseTables extends Application {
                         currentCell.setNextCellleft(null);
                     }
 
+                    currentCell.setNextCellup(null);
+
                     if (currentCell.getNextCellDown() != null) {
                         currentCell = currentCell.getNextCellDown();
+                        currentCell.getNextCellup().setNextCellDown(null);
                     } else {
-                        while (currentCell.getNextCellup() != null) {
-                            currentCell.setNextCellDown(null);
-                            if (currentCell.getNextCellDown() != null) {
-                                currentCell.getNextCellDown().setNextCellup(null);
-                            }
-                        }
                         break;
                     }
-
-                    currentCell = currentCell.getNextCellRight();
                 }
 
                 if (current.getNextStudentRight() != null) {
@@ -298,25 +290,13 @@ public class SparseTables extends Application {
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
-            alert.setHeaderText("No courses here");
+            alert.setHeaderText("No Students here");
             alert.showAndWait();
         }
     }
 
     public static void deleteCourse(String NameCourse, CoursesList list, Students_linkedList listSTD) {
 
-        Student current2 = listSTD.getFirstStudent();
-        if (current2 != null) {
-            Cell_data currentCell2;
-            while (current2 != null) {
-                currentCell2 = current2.getFirstdCourseCellData();
-                if (currentCell2 != null && currentCell2.getMy_course().getCourseName().equals(NameCourse)) {
-                    current2.setFirstdCourseCellData(currentCell2.getNextCellDown());
-                }
-                System.out.println(current2.getStudentName() + "");
-                current2 = current2.getNextStudentRight();
-            }
-        }
         Course current = list.getFirstCourse();
         if (current != null) {
 
@@ -329,6 +309,14 @@ public class SparseTables extends Application {
                 Cell_data currentCell = current.getFirstStudentCellData();
 
                 while (currentCell != null) {
+
+                    Cell_data currentCell2 = currentCell.getMy_student().getFirstdCourseCellData();
+                    if (currentCell2 != null && currentCell2.getMy_course().getCourseName().equals(NameCourse)) {
+                        currentCell.getMy_student().setFirstdCourseCellData(currentCell2.getNextCellDown());
+                    }
+                    
+                    currentCell.setMy_course(null);
+                    currentCell.setMy_student(null);
 
                     if (currentCell.getNextCellDown() != null) {
                         currentCell.getNextCellDown().setNextCellup(currentCell.getNextCellup());
@@ -343,16 +331,12 @@ public class SparseTables extends Application {
                         currentCell.setNextCellup(null);
                     }
 
+                    currentCell.setNextCellleft(null);
+
                     if (currentCell.getNextCellRight() != null) {
                         currentCell = currentCell.getNextCellRight();
+                        currentCell.getNextCellleft().setNextCellRight(null);
                     } else {
-                        while (currentCell.getNextCellleft() != null) {
-                            currentCell.setNextCellRight(null);
-                            if (currentCell.getNextCellRight() != null) {
-                                currentCell.getNextCellRight().setNextCellleft(null);
-                            }
-                            currentCell = currentCell.getNextCellleft();
-                        }
                         break;
                     }
                 }
