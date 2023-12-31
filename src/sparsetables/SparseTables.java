@@ -155,7 +155,6 @@ public class SparseTables extends Application {
             Cell_data curCellData = Course.getFirstStudentCellData();
             System.out.println("Students in Course " + Course.getCourseId() + ":");
             while (curCellData != null) {
-                String StudentId = curCellData.getMy_student().getStudentId();
                 showStudents_OF_CRScontroller.data_controller_data.add(curCellData.getMy_student());
                 curCellData = curCellData.getNextCellRight();
             }

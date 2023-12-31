@@ -32,7 +32,6 @@ public class showCourses_OF_STDcontroller implements Initializable {
     private Stage stage;
 
     Course crsDelete;
-    int pos_delete;
     public static ObservableList<Course> data_controller_data2;
     
     @FXML

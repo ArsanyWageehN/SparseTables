@@ -10,8 +10,8 @@ public class Students_linkedList {
     // Employee class representing each Student node
     public class Student {
 
-        private String StudentId; // ID of the Student
-        private String StudentName; // Name of the Student
+        private final String StudentId; // ID of the Student
+        private final String StudentName; // Name of the Student
         private Student nextStudent; // Reference to the next Student in the list
         private Student left_Student; // Reference to the previous Student in the list
         private Cell_data firstdCourseCellData; // Reference to the first cell data containing Course information

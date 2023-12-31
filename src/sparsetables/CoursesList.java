@@ -10,8 +10,8 @@ public class CoursesList {
     // Course class representing each Course node
     public class Course {
 
-        private String CourseId; // ID of the Course
-        private String CourseName; // Name of the Course
+        private final String CourseId; // ID of the Course
+        private final String CourseName; // Name of the Course
         private Course down_Course; // Reference to the next Course in the list
         private Course up_Course; // Reference to the previous Course in the list
         private Cell_data firstStudentCellData; // Reference to the first cell data containing Student information

@@ -27,7 +27,6 @@ public class MenuController implements Initializable {
     private ChoiceBox<Students_linkedList.Student> list_std;
     private Stage stage;
     private Scene scene;
-    String st, crs;
 
     ObservableList<CoursesList.Course> data;
     ObservableList<Students_linkedList.Student> data2;

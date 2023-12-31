@@ -8,10 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sparsetables.SparseTables;
@@ -26,12 +23,7 @@ public class BasicFXMLController {
 
     @FXML
     private TextField CRS_NAME, CODE_CRS, ID_STD, NameSTD, ID_STD_OF_DELETE, ID_CRS_OF_DELETE;
-    private TableView<Student> Table_Students;
-    private TableColumn<String, Student> col_id, col_name;
-    @FXML
-    private MenuButton list_std;
-    @FXML
-    private MenuButton list_crs;
+    private TableColumn<String, Student> col_id;
 
     public void switchToStudent(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/sparsetablesGUI_FXML/Add_StudentFX.fxml"));
@@ -141,7 +133,7 @@ public class BasicFXMLController {
             alert.setHeaderText("Enter ID of the student");
             alert.showAndWait();
         } else {
-            SparseTables.sparseTable.deleteStudent(id, studentList, SparseTables.coursesList);
+            SparseTables.deleteStudent(id, studentList, SparseTables.coursesList);
         }
     }
 
@@ -153,7 +145,7 @@ public class BasicFXMLController {
             alert.setHeaderText("Enter Name of the course");
             alert.showAndWait();
         } else {
-            SparseTables.sparseTable.deleteCourse(id, SparseTables.coursesList, studentList);
+            SparseTables.deleteCourse(id, SparseTables.coursesList, studentList);
         }
     }
 
